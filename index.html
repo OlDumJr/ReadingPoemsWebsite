@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ClassLink</title>
-    <link id="favicon" rel="icon" href="https://th.bing.com/th?id=ODLS.3ad866e3-79ca-41f8-abe1-f923fe023a8c&w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2" /> <!-- Default blank favicon -->
+    <link id="favicon" rel="icon" href="https://th.bing.com/th?id=ODLS.3ad866e3-79ca-41f8-abe1-f923fe023a8c&w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2" /> <!-- Default favicon or image in tab -->
     <style>
         /* Main page styling */
         body {
@@ -88,11 +88,22 @@
             cursor: pointer;
         }
 
-        /* New button in bottom left corner */
+        /* Button in bottom left corner for play games */
         #redirectButton {
             position: fixed;
             bottom: 20px;
             left: 20px;
+            padding: 10px 20px;
+            background-color: black;
+            color: green;
+            border: 1px solid green;
+            font-family: monospace;
+        }
+        /* Button in bottom right corner for status */
+        #statusButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
             padding: 10px 20px;
             background-color: black;
             color: green;
@@ -135,8 +146,11 @@
         <button onclick="closeSettings()">Close</button>
     </div>
 
-    <!-- Button to redirect to another website -->
+    <!-- Button to redirect to games playing bored -->
     <button id="redirectButton" onclick="redirectToWebsite()">Bored without games to play?</button>
+
+    <!-- Button for Status -->
+    <button id="statusButton" onclick="redirectToStatus()">Website Status</button>
 
     <script>
         const texts = [
@@ -144,11 +158,11 @@
             "In memory of db100.boxd.africa",
             "whats a calc",
             "If you have suggestions for the website or want to contact me email oldumjr@boxd.africa",
-            "now offering your own messages from right here starting at $1",
+            "big things coming soon",
             "redirect",
             "not sponsored yet",
             "follow @edgarsanchez413 on snapchat",
-            "math research is blocked",
+            "up",
             "now has over 300 lines of code!",
             "does not include free wifi"
         ];
@@ -299,6 +313,9 @@
 
         function redirectToWebsite() {
             window.location.href = "https://help.homeworkquestions.top/morehelp"; // Replace with your desired URL
+        }
+            function redirectToChangelogs() {
+            window.location.href = "https://help.schoolhomework.top/status"; // 
         }
     </script>
 </body>
