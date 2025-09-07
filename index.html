@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ClassLink</title>
-    <link id="favicon" rel="icon" href="https://th.bing.com/th?id=ODLS.3ad866e3-79ca-41f8-abe1-f923fe023a8c&w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2" /> <!-- Default favicon or image in tab -->
+    <link id="favicon" rel="icon" href="https://th.bing.com/th?id=ODLS.3ad866e3-79ca-41f8-abe1-f923fe023a8c&w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2" />
     <style>
-        /* Main page styling */
         body {
             background-color: black;
             color: green;
@@ -19,17 +18,15 @@
             margin: 0;
         }
 
-        /* Styling for the heading */
         h1 {
             margin-top: 20px;
             color: green;
             text-align: center;
             white-space: nowrap;
             overflow: hidden;
-            border-right: 2px solid green; /* Cursor effect */
+            border-right: 2px solid green;
         }
 
-        /* Styling for buttons */
         button {
             padding: 10px 20px;
             background-color: black;
@@ -37,9 +34,9 @@
             border: 1px solid green;
             font-family: monospace;
             margin-bottom: 20px;
+            cursor: pointer;
         }
 
-        /* Popup styling */
         #popup, #settingsPopup {
             display: none;
             position: fixed;
@@ -88,27 +85,16 @@
             cursor: pointer;
         }
 
-        /* Button in bottom left corner for play games */
         #redirectButton {
             position: fixed;
             bottom: 20px;
             left: 20px;
-            padding: 10px 20px;
-            background-color: black;
-            color: green;
-            border: 1px solid green;
-            font-family: monospace;
         }
-        /* Button in bottom right corner for status */
+
         #statusButton {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            padding: 10px 20px;
-            background-color: black;
-            color: green;
-            border: 1px solid green;
-            font-family: monospace;
         }
     </style>
 </head>
@@ -146,11 +132,9 @@
         <button onclick="closeSettings()">Close</button>
     </div>
 
-    <!-- Button to redirect to games playing bored -->
+    <!-- Buttons -->
     <button id="redirectButton" onclick="redirectToWebsite()">Bored without games to play?</button>
-
-    <!-- Button for Status -->
-    <button id="statusButton" onclick="redirectToStatus()">Website Status</button>
+    <button id="statusButton" onclick="redirectToChangelogs()">Website Status</button>
 
     <script>
         const texts = [
@@ -169,7 +153,6 @@
 
         const randomIndex = Math.floor(Math.random() * texts.length);
         const selectedText = texts[randomIndex];
-
         const animatedTextElement = document.getElementById('animatedText');
         let currentIndex = 0;
 
@@ -311,11 +294,39 @@
             }
         }
 
+        // Bottom left button redirect
+        const redirectURL = "https://example.com"; // Set the URL you want
+        const faviconURL = defaultSettings.favicon; // Can change to custom favicon
+
         function redirectToWebsite() {
-            window.location.href = "https://help.homeworkquestions.top/morehelp"; // Replace with your desired URL
+            const newWindow = window.open("about:blank", "_blank");
+            if (newWindow) {
+                newWindow.document.write(`
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Website Viewer</title>
+                        <link rel="icon" href="${faviconURL}" type="image/x-icon">
+                        <style>
+                            html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: black; }
+                            iframe { width: 100vw; height: 100vh; border: none; }
+                        </style>
+                    </head>
+                    <body>
+                        <iframe src="${redirectURL}" allowfullscreen></iframe>
+                    </body>
+                    </html>
+                `);
+                newWindow.document.close();
+            } else {
+                alert("Popup blocked! Please allow popups for this website.");
+            }
         }
-            function redirectToChangelogs() {
-            window.location.href = "https://help.schoolhomework.top/status"; // 
+
+        function redirectToChangelogs() {
+            window.location.href = "https://help.schoolhomework.top/status"; 
         }
     </script>
 </body>
